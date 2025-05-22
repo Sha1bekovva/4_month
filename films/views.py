@@ -19,5 +19,5 @@ def film_detail_view(request, id):
             'film_id':film_id,
         }
         return render(request,
-                    template_name='films/film_detail',
+                    template_name='films/film_detail.html',
                     context=context)
