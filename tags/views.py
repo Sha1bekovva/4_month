@@ -11,13 +11,6 @@ def all_products_view(request):
     return render(request,template_name='tags/all_products.html',
         context=context)   
 
-
-
-
-
-
-
-
 #food
 def meal_view(request):
     if request.method == 'GET':

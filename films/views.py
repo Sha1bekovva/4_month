@@ -1,5 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from . import models
+from .forms import FilmForm
+from django.http import HttpResponse
+
+
+
+def create_film_view(request):
+    if request.method == 'POST':
+        form = FilmForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # или куда хотите перенаправить
+    else:
+        form = FilmForm()
+    return render(request, 'films/create_film.html', {'form': form})
+
 
 def film_list_view(request):
     if request.method == 'GET':
