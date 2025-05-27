@@ -16,11 +16,13 @@
 {% include 'components/header.html' %}
 
 
-<!-- Форма для добавления книг -->
-<form action="{% url 'create_film' %}" method="post">
+<!-- Форма для измененик фильмв -->
+
+<form  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
+
     {{ form.as_p }}
-    <button type="submit">Добавить книгу</button>
+    <button type="submit">Обновить фильм</button>
 </form>
 
 

@@ -18,31 +18,32 @@
 <!-- Карточки фильмов -->
 <section class="cards">
 
-<!-- цикл тут открытие -->
     {% for i in film %}
     <div class="card">
-        <img src="{{ i.image.url }}"
-            alt="{{ i.title }}">
-        <h3><a href="/films/_list/{{ i.id }}">{{i.titile}}</a></h3>
-        <p>Описание фильма 4. Краткое описание сюжета или других важных деталей.</p>
+        <img src="{{ i.image.url }}" alt="{{ i.title }}">
+        <h3>
+            <a href="{% url 'films_detail' id=i.id %}">{{ i.title }}</a>
+        </h3>
+        <p>{{ i.description }}</p>
+
         <div class="card-buttons">
-            <button class="edit"><a href="{% url create_film %}">add</a></button>
-            <button class="delete"><a href="#">Удалить</a></button>
-            <button class="edit"><a href="#">Изменить</a></button>
+            <button class="create">
+                <a href="{% url 'create_film' %}">Добавить</a>
+            </button>
+            <button class="delete">
+                <a href="{% url 'delete_film' id=i.id %}">Удалить</a>
+            </button>
+            <button class="edit">
+                <a href="{% url 'update_film' id=i.id %}">Изменить</a>
+            </button>
         </div>
     </div>
     {% endfor %}
-<!-- цикл тут закрытие -->
-
-
-
 
 </section>
 
-
 <!-- Футер -->
 {% include 'components/footer.html' %}
-
 
 </body>
 </html>

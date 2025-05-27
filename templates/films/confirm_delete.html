@@ -4,30 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Интернет Кинотеатр</title>
     <link rel="stylesheet" href="{% static 'css/header_and_footer/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/film_and_film_detail/cards.css' %}">
     <link rel="stylesheet" href="{% static 'css/header_and_footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_page/hello.css' %}">
+    <link rel="stylesheet" href="{% static 'css/film_and_film_detail/film_detail.css' %}">
 </head>
 <body>
 
 <!-- Меню -->
 {% include 'components/header.html' %}
 
-
-<!-- Форма для добавления книг -->
-<form action="{% url 'create_film' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Добавить книгу</button>
-</form>
-
+<!--подтверждение удаления фильмы-->
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Вы уверенныб что хотите удалить фильма </h2>
+        <button type="submit">Да</button>
+    </form>
+    <a href="{% url 'book_list' %}">Нет</a>
 
 
 <!-- Футер -->
 {% include 'components/footer.html' %}
-
 
 
 </body>

@@ -19,6 +19,10 @@
 }
 
 /* Стиль изображения в карточке */
+
+.card button{
+    background-color: #c0392b;
+}
 .card img {
     width: 100%;
     height: auto;
