@@ -11,6 +11,7 @@ class KinovListView(generic.ListView):
     template_name = 'parser_library/parser_film_list.html'
     context_object_name = 'kinov'
     model = Parser_Kinov  # ✅ Используем напрямую
+    paginate_by = 5
 
 
     def get_queryset(self):

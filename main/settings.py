@@ -1,5 +1,9 @@
 from pathlib import Path
 import os
+from . import admin_panel
+
+JAZZMIN_SETTINGS = admin_panel.JAZZMIN_SETTINGS
+JAZZMIN_UI_TWEAKS = admin_panel.JAZZMIN_UI_TWEAKS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wz8@%@d1#-aj1l&^y$$33ie@ogh-h3tfyamp($ztro5ht=&3^r'
+SECRET_KEY = 'django-insecure-^e-4+ln9ly&)!h_(r+_bbp2c^n9*p*(sfsn&gbi5aq_p#c!+9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,12 +24,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'first_page',
     'films',
     'tags',
     'parser_app',
@@ -40,7 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'users.middlewares.AgeClubMiddleware'
+    'users.middlewares.AgeClubMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -48,7 +54,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

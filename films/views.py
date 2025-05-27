@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from . import models, forms
 from django.views import generic
+from django.db.models import F
 
 class SearchFilmView(generic.ListView):
     model = models.Film               # Добавлено
@@ -140,3 +141,21 @@ class FilmDetailView(generic.DetailView):
 #         return render(request,
 #                     template_name='films/film_detail.html',
 #                     context=context)
+# получение id и вывод detail
+class FilmDetailView(generic.DetailView):
+    template_name = 'films/film_detail.html'
+    model = models.Film
+    pk_url_kwarg = 'id'  # если в URL параметр называется 'id'
+
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        film = self.object
+        viewed_books = request.session.get("viewed_films", [])
+        if film.id not in viewed_books:
+            film.views = F("views") + 1
+            film.save()
+            film .refresh_from_db()
+
+            viewed_films.append(film.id)
+            request.session["viewed_films"] = viewed_films
+        return response
