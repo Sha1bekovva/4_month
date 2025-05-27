@@ -1,0 +1,64 @@
+
+
+<!-- form parser -->
+<div class="form-container">
+  <form method="post" class="form">
+    <h1 class="form-title">Начать Парсинг</h1>
+    {% csrf_token %}
+    <div class="form-content">
+      {{ form.as_p }}
+    </div>
+    <button type="submit" class="submit-btn">Начать</button>
+  </form>
+</div>
+
+
+
+
+
+
+<style>
+  /* Контейнер для центрирования */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Фон страницы */
+}
+
+/* Стили для формы */
+.form {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+/* Заголовок формы */
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Контейнер для содержимого формы */
+.form-content {
+  margin-bottom: 15px;
+}
+
+/* Стили для кнопки */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+</style>

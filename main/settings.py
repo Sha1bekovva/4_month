@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'films',
     'tags',
+    'parser_app'
 ]
 
 MIDDLEWARE = [
