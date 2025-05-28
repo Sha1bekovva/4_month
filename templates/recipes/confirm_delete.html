@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интернет Кинотеатр</title>
+    <title>Менеджер рецептов</title>
     <link rel="stylesheet" href="{% static 'css/header_and_footer/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/film_and_film_detail/cards.css' %}">
     <link rel="stylesheet" href="{% static 'css/header_and_footer/footer.css' %}">
@@ -16,18 +16,16 @@
 <!-- Меню -->
 {% include 'components/header.html' %}
 
-<!--подтверждение удаления фильмы-->
-    <form method="POST">
-        {% csrf_token %}
-        <h2>Вы уверенныб что хотите удалить фильма </h2>
-        <button type="submit">Да</button>
-    </form>
-    <a href="{% url 'film_list' %}">Нет</a>
-
+<!-- Подтверждение удаления рецепта -->
+<form method="POST">
+    {% csrf_token %}
+    <h2>Вы уверены, что хотите удалить рецепт?</h2>
+    <button type="submit">Да</button>
+</form>
+<a href="{% url 'recipe_list' %}">Нет</a>
 
 <!-- Футер -->
 {% include 'components/footer.html' %}
-
 
 </body>
 </html>

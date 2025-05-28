@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ object.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/header_and_footer/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header_and_footer/footer.css' %}">
+</head>
+<body>
+
+<!-- Меню -->
+{% include 'components/header.html' %}
+
+<div class="recipe-detail">
+    <div class="recipe-info">
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.description }}</p>
+    </div>
+
+    <div class="ingredient-list">
+        <h2>Ингредиенты:</h2>
+        {% if object.ingredients.all %}
+            <ul>
+                {% for ingredient in object.ingredients.all %}
+                    <li>{{ ingredient.name }} — {{ ingredient.quantity }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Ингредиенты не добавлены.</p>
+        {% endif %}
+    </div>
+
+    <div class="actions">
+        <a href="{% url 'ingredient_add' recipe_id=object.id %}">Добавить ингредиент</a> |
+        <a href="{% url 'recipe_delete' id=object.id %}">Удалить рецепт</a> |
+        <a href="{% url 'recipe_list' %}">Назад к списку рецептов</a>
+    </div>
+</div>
+
+<!-- Футер -->
+{% include 'components/footer.html' %}
+
+</body>
+</html>

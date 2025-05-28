@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Список рецептов</title>
+    <link rel="stylesheet" href="{% static 'css/header_and_footer/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/film_and_film_detail/cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header_and_footer/footer.css' %}">
+</head>
+<body>
+
+<!-- Меню -->
+{% include 'components/header.html' %}
+
+<!-- Карточки рецептов -->
+<section class="cards">
+    <h1>Список рецептов</h1>
+    <a href="{% url 'recipe_add' %}">Добавить рецепт</a>
+
+    <ul>
+        {% for recipe in object_list %}
+            <li>
+                {{ recipe.title }}
+                <a href="{% url 'recipe_detail' recipe.pk %}">Посмотреть</a>
+                <a href="{% url 'recipe_delete' recipe.pk %}">Удалить</a>
+            </li>
+        {% empty %}
+            <li>Рецептов пока нет.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<!-- Футер -->
+{% include 'components/footer.html' %}
+
+</body>
+</html>

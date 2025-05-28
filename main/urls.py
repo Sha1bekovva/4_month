@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('tags.urls')),
     path('', include('parser_app.urls')),
     path('', include('users.urls')),
+    path('recipes_list/', include('recipes.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
             document_root=settings.MEDIA_ROOT)

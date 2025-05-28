@@ -57,8 +57,8 @@ class UpdateFilmView(generic.UpdateView):
 #     })
 
 class DeleteFilmView(generic.DeleteView):
-    template_name = 'books/confirm_delete.html'
-    success_url = '/book_list'
+    template_name = 'films/confirm_delete.html'
+    success_url = '/film_list'
 
     def get_object(self, **kwargs):
         film_id = self.kwargs.get('id')
